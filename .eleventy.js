@@ -5,6 +5,9 @@ module.exports = function (eleventyConfig) {
     // Copy assets
     eleventyConfig.addPassthroughCopy("src/assets");
 
+    // Copy favicons
+    eleventyConfig.addPassthroughCopy({"src/favicons/!(*.liquid)": "/"});
+
     // DATA ---------------------------------------------------------------------------------------
 
     // Parse YAML files as data
