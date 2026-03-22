@@ -1,0 +1,41 @@
+---
+# Delete this if not hosting on cPanel.
+permalink: .htaccess
+eleventyExcludeFromCollections: true
+---
+# LITESPEED / CACHE -------------------------------------------------------------------------------
+
+<IfModule LiteSpeed>
+  CacheEnable public /
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# COMPRESSION -------------------------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# CLEAN URLS --------------------------------------------------------------------------------------
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+
+# SECURITY HEADERS ------------------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>
+
+# ERROR HANDLING ----------------------------------------------------------------------------------
+
+ErrorDocument 404 /404.html
