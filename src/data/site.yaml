@@ -1,0 +1,9 @@
+# General information
+title: melankorin's 11ty starter
+description: This is a starter melankorin uses for her 11ty projects.
+author: melankorin
+theme_colour: "#2b2b2b"
+url: "https://samplewebsite.com"
+lang: en
+locale: en_US
+timezone: America/Sao_Paulo
