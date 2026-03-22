@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "watch:css": " ",
-    "watch:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --watch",
+    "watch:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --watch --sourcemap",
     "watch:eleventy": "eleventy --serve",
     "build:css": " ",
     "build:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --minify",
