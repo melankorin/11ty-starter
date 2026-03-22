@@ -33,6 +33,21 @@ module.exports = function (eleventyConfig) {
             .toFormat(format);
     });
 
+    // SHORTCODES ---------------------------------------------------------------------------------
+
+    // For demonstration purposes: container shortcode
+    /*
+        To use this:
+        {% container "bg-pink-300" %} {% endcontainer %}
+    */
+    eleventyConfig.addPairedShortcode("container", function(content, classes = "") {
+        return `
+        <div class="container ${classes}">
+            ${content}
+        </div>
+        `
+    });
+
     // SERVE AND EXPORT ---------------------------------------------------------------------------
 
     // Dev server options

@@ -1,0 +1,9 @@
+{% comment %}
+    For demonstration purposes: container partial
+    To use this:
+    {% render "partials/container.liquid", classes:"bg-pink-300", content: "Sample Text" %}
+{% endcomment %}
+
+<div class="container {{ classes | default: " " }}">
+    {{ content }}
+</div>
