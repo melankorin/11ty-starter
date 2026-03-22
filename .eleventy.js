@@ -47,6 +47,42 @@ module.exports = function (eleventyConfig) {
         </div>
         `
     });
+    
+    // MARKDOWN -----------------------------------------------------------------------------------
+
+    /*
+        To use this, install these dependencies:
+        npm install markdown-it markdown-it-attrs markdown-it-div markdown-it-anchor -D
+    */
+
+    // Set up Markdown renderer
+    /* const markdownIt = require("markdown-it");
+    const mdAnchor = require("markdown-it-anchor");
+    const mdDiv = require("markdown-it-div");
+    const mdAttr = require("markdown-it-attrs"); */
+    
+
+    /* const markdownItRenderer = markdownIt({
+            html: true,
+            breaks: true,
+            typographer: true
+        })
+        .use(mdAnchor)
+        .use(mdDiv)
+        .use(mdAttr); */
+
+    // Set Markdown renderer as the default renderer for .md files
+    /* eleventyConfig.setLibrary("md", markdownItRenderer); */
+
+    // Inline Markdown filter
+    /* eleventyConfig.addFilter("markdownifyInline", (str) => {
+        return markdownItRenderer.renderInline(str);
+    }); */
+
+    // Full Markdown filter
+    /* eleventyConfig.addFilter("markdownify", (str) => {
+        return markdownItRenderer.render(str);
+    }); */
 
     // SERVE AND EXPORT ---------------------------------------------------------------------------
 
