@@ -1,5 +1,10 @@
 module.exports = function (eleventyConfig) {
 
+    // FILES --------------------------------------------------------------------------------------
+
+    // Copy assets
+    eleventyConfig.addPassthroughCopy("src/assets");
+
     // DATA ---------------------------------------------------------------------------------------
 
     // Parse YAML files as data
