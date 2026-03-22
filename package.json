@@ -6,6 +6,7 @@
     "build:eleventy": "eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.5"
+    "@11ty/eleventy": "^3.1.5",
+    "js-yaml": "^4.1.1"
   }
 }
