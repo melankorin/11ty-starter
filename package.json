@@ -2,8 +2,10 @@
   "name": "11ty-starter",
   "version": "1.0.0",
   "scripts": {
+    "watch:css": " ",
     "watch:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --watch",
     "watch:eleventy": "eleventy --serve",
+    "build:css": " ",
     "build:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --minify",
     "build:eleventy": "eleventy",
     "start": "npm-run-all -p watch:*",
