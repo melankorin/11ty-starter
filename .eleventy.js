@@ -1,3 +1,5 @@
+const { RenderPlugin } = require("@11ty/eleventy");
+
 module.exports = function (eleventyConfig) {
 
     // FILES --------------------------------------------------------------------------------------
@@ -135,6 +137,11 @@ module.exports = function (eleventyConfig) {
     /* eleventyConfig.addFilter("markdownify", (str) => {
         return markdownItRenderer.render(str);
     }); */
+
+    // CONFIGURATION ------------------------------------------------------------------------------
+    
+    // Enable render plugin
+    eleventyConfig.addPlugin(RenderPlugin);
 
     // SERVE AND EXPORT ---------------------------------------------------------------------------
 
