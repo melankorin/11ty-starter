@@ -143,6 +143,14 @@ module.exports = function (eleventyConfig) {
     // Enable render plugin
     eleventyConfig.addPlugin(RenderPlugin);
 
+    // Enable syntax highlighting
+    /*  
+        To use this, install this dependency:
+        npm install @11ty/eleventy-plugin-syntaxhighlight -D
+    */
+    /* const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+    eleventyConfig.addPlugin(syntaxHighlight); */
+
     // SERVE AND EXPORT ---------------------------------------------------------------------------
 
     // Dev server options
