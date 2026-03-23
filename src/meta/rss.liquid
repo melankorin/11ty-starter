@@ -1,0 +1,28 @@
+---
+permalink: /rss.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+>
+    <channel>
+        <title>{{ site.title }}</title>
+        <description>{{ site.description }}</description>
+        <link>{{ site.url }}</link>
+        <atom:link href="{{ site.url }}{{ page.url | url }}" rel="self" type="application/rss+xml" />
+        <language>{{ site.lang }}</language>
+        <generator>{{ eleventy.generator }}</generator>
+        {% for post in collections.blog %}
+            <item>
+                <title>{{ post.fileSlug | replace: "-", " " | capitalize }}</title>
+                <description>This is an RSS item.</description>
+                <link>{{ site.url }}{{ post.url | url }}</link>
+                <pubDate>{{ post.date | date_format: "ccc, dd MMM yyyy HH:mm:ss ZZZZ", site.timezone }}</pubDate>
+                <guid isPermaLink="true">{{ site.url }}{{ post.url | url }}</guid>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>
