@@ -9,7 +9,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "src/img/static": "assets/img" });
 
     // Copy favicons
-    eleventyConfig.addPassthroughCopy({"src/favicons/!(*.liquid)": "/"});
+    eleventyConfig.addPassthroughCopy({"src/meta/favicons/!(*.liquid)": "/"});
 
     // Copy optimized images after build
     const fs = require("fs-extra");
