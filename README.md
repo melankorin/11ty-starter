@@ -1,5 +1,20 @@
 # melankorin's 11ty starter
 
+This is a simple (but complete) starter for my indie web art projects. Made for small projects, very highly opinionated, inspired by Jekyll. Guaranteed to give developers a headache, but it works fine for me!
+
+## Features
+
+- Liquid template code absolutely everywhere!
+- Either Sass or Tailwind, you get to choose!
+- A complete HTML boilerplate built-in!
+- An image optimization pipeline via shortcodes!
+- Handles YAML data files!
+- Date parsing filter powered by Luxon!
+- JavaScript bundling with esbuild!
+- Dynamically generated metadata!
+- Fetches the magical clanker repellant for you!
+- Cache busting and HTML minifcation with Gulp!
+
 ## CSS processor setup
 
 This starter lets you choose between **Sass** and **Tailwind** for your project.
