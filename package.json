@@ -2,6 +2,8 @@
   "name": "11ty-starter",
   "version": "1.0.0",
   "scripts": {
+    "clean:site": "rimraf site",
+    "clean:cache": "rimraf .cache",
     "watch:css": " ",
     "watch:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --watch --sourcemap",
     "watch:eleventy": "eleventy --serve",
@@ -9,8 +11,8 @@
     "build:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --minify",
     "build:eleventy": "eleventy",
     "build:gulp": "gulp",
-    "start": "npm-run-all -p watch:*",
-    "build": "npm-run-all build:css build:js build:eleventy build:gulp"
+    "start": "npm-run-all clean:site -p watch:*",
+    "build": "npm-run-all clean:site build:css build:js build:eleventy build:gulp"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
@@ -21,6 +23,7 @@
     "gulp-hash-src": "^0.1.6",
     "gulp-html-minifier-terser": "^8.0.0",
     "js-yaml": "^4.1.1",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.1.3"
   }
 }
