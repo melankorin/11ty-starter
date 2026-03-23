@@ -14,7 +14,9 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-img": "^6.0.4",
     "esbuild": "^0.27.4",
+    "fs-extra": "^11.3.4",
     "gulp": "^5.0.1",
     "gulp-hash-src": "^0.1.6",
     "gulp-html-minifier-terser": "^8.0.0",
