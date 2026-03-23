@@ -1,5 +1,11 @@
 # melankorin's 11ty starter
 
+<!--
+npm run clean
+npm run start
+npm run build
+-->
+
 This is a simple (but complete) starter for my indie web art projects. Made for small projects, very highly opinionated, inspired by Jekyll. Guaranteed to give developers a headache, but it works fine for me!
 
 ## Features
