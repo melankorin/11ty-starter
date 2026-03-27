@@ -1,6 +1,8 @@
 const { RenderPlugin } = require("@11ty/eleventy");
 
-module.exports = function (eleventyConfig) {
+module.exports = async function (eleventyConfig) {
+
+    const eleventyOgImage = (await import('eleventy-plugin-og-image')).default;
 
     // FILES --------------------------------------------------------------------------------------
 
@@ -154,6 +156,24 @@ module.exports = function (eleventyConfig) {
     // Strict filters in Liquid
     eleventyConfig.setLiquidOptions({
         strictFilters: true
+    });
+
+    // OG image plugin
+    eleventyConfig.addPlugin(eleventyOgImage, {
+        templateExtension: "html",
+        outputDir: "assets/img/og/", 
+        urlPath: "/assets/img/og/",
+        previewMode: true,
+        satoriOptions: {
+            fonts: [
+                {
+                    name: 'Inter',
+                    data: fs.readFileSync('./src/meta/og/fonts/inter-regular.ttf'),
+                    weight: 400,
+                    style: 'normal',
+                },
+            ],
+        }
     });
 
     // SERVE AND EXPORT ---------------------------------------------------------------------------

@@ -33,6 +33,10 @@
         {% endfor %}
     {% endif %}
 
+    {% if og_src %}
+        {% ogImage og_src, og_data  %}
+    {% endif %}
+
     {% comment %} 
     <meta property="og:title" content="{{ site.title }}">
     <meta property="og:url" content="{{ site.url }}{{ page.url | url }}">
