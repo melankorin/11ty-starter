@@ -21,7 +21,7 @@ module.exports = async function (eleventyConfig) {
 
         if (fs.existsSync(source)) {
             await fs.copy(source, dest);
-            console.log(`${chalk.green("[Image Cache]")} Synced to ${dest}`);
+            console.log(`[Image Cache] Synced to ${dest}`);
         }
     });
 
@@ -73,7 +73,6 @@ module.exports = async function (eleventyConfig) {
     */
     const Image = require("@11ty/eleventy-img");
     const path = require("path");
-    const chalk = require("chalk")
     eleventyConfig.addShortcode("image", async function (src, alt, className = "", widths = "300, 600", sizes = "100vw", formats = "webp", loading = "lazy", decoding = "async") {
         const inputBase = "./src/img/dynamic/";
         const outputBase = "./.cache/images/";
