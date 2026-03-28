@@ -1,9 +1,9 @@
 # melankorin's 11ty starter
 
 <!--
-npm run clean
-npm run start
-npm run build
+pnpm start
+pnpm build
+pnpm clean:cache
 -->
 
 This is a messy and just pretty crappy starter for my web projects! Made for small projects, very highly opinionated, inspired by Jekyll. Guaranteed to give developers a headache, but it works fine for me!
