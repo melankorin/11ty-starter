@@ -31,7 +31,7 @@ This starter lets you choose between **Sass** and **Tailwind** for your project.
 Install these dependencies:
 
 ```sh
-npm install sass gulp-autoprefixer -D
+pnpm add -D sass gulp-autoprefixer
 ```
 
 Replace the `watch:css` and `build:css` scripts with these:
@@ -50,7 +50,7 @@ Delete the `./src/css` folder.
 Install these dependencies:
 
 ```sh
-npm install tailwindcss @tailwindcss/cli -D
+pnpm add -D tailwindcss @tailwindcss/cli
 ```
 
 Replace the `watch:css` and `build:css` scripts with these:
