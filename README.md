@@ -6,7 +6,7 @@ npm run start
 npm run build
 -->
 
-This is a simple (but complete) starter for my indie web art projects. Made for small projects, very highly opinionated, inspired by Jekyll. Guaranteed to give developers a headache, but it works fine for me!
+This is a messy and just pretty crappy starter for my web projects! Made for small projects, very highly opinionated, inspired by Jekyll. Guaranteed to give developers a headache, but it works fine for me!
 
 ## Features
 
@@ -20,6 +20,7 @@ This is a simple (but complete) starter for my indie web art projects. Made for 
 - Dynamically generated metadata!
 - Fetches the magical clanker repellant for you!
 - Cache busting and HTML minifcation with Gulp!
+- Automatically generated OG images!
 
 ## CSS processor setup
 
