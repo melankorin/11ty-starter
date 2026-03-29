@@ -19,7 +19,6 @@
     "@11ty/eleventy-img": "^6.0.4",
     "eleventy-plugin-og-image": "^4.2.1",
     "esbuild": "^0.27.4",
-    "fs-extra": "^11.3.4",
     "gulp": "^5.0.1",
     "gulp-hash-src": "^0.1.6",
     "gulp-html-minifier-terser": "^8.0.0",

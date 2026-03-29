@@ -14,14 +14,18 @@ module.exports = async function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"src/meta/favicons/!(*.liquid)": "/"});
 
     // Copy optimized images after build
-    const fs = require("fs-extra");
+    const fs = require("node:fs");
+    const fsp = require("node:fs/promises");
     eleventyConfig.on("eleventy.after", async () => {
         const source = "./.cache/images/";
         const dest = "./site/assets/img/";
-
         if (fs.existsSync(source)) {
-            await fs.copy(source, dest);
-            console.log(`[Image Cache] Synced to ${dest}`);
+            try {
+                await fsp.cp(source, dest, { recursive: true });
+                console.log(`[Image Cache] Synced to ${dest}`);
+            } catch (err) {
+                console.error(`[Image Cache] Sync failed: ${err.message}`);
+            }
         }
     });
 
