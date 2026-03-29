@@ -2,8 +2,8 @@
   "name": "11ty-starter",
   "version": "1.0.0",
   "scripts": {
-    "clean:site": "rimraf site",
-    "clean:cache": "rimraf .cache",
+    "clean:site": "node -e \"fs.rmSync('site', { recursive: true, force: true })\"",
+    "clean:cache": "node -e \"fs.rmSync('.cache', { recursive: true, force: true })\"",
     "watch:css": " ",
     "watch:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --watch --sourcemap",
     "watch:eleventy": "eleventy --serve",
@@ -24,7 +24,6 @@
     "gulp-hash-src": "^0.1.6",
     "gulp-html-minifier-terser": "^8.0.0",
     "js-yaml": "^4.1.1",
-    "luxon": "^3.7.2",
-    "rimraf": "^6.1.3"
+    "luxon": "^3.7.2"
   }
 }
