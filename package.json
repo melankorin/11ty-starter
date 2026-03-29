@@ -12,7 +12,7 @@
     "build:eleventy": "eleventy",
     "build:gulp": "gulp",
     "start": "pnpm clean:site && pnpm --parallel run \"/^watch:.*/\"",
-    "build": "pnpm clean:site && pnpm run \"/^build:.*/\""
+    "build": "pnpm clean:site && pnpm --parallel run \"/^build:(js|css|eleventy)/\" && pnpm build:gulp"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
