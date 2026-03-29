@@ -107,7 +107,7 @@ module.exports = async function (eleventyConfig) {
 
     /*
         To use this, install these dependencies:
-        npm install markdown-it markdown-it-attrs markdown-it-div markdown-it-anchor -D
+        pnpm add -D markdown-it markdown-it-attrs markdown-it-div markdown-it-anchor
     */
 
     // Set up Markdown renderer
@@ -147,7 +147,7 @@ module.exports = async function (eleventyConfig) {
     // Enable syntax highlighting
     /*  
         To use this, install this dependency:
-        npm install @11ty/eleventy-plugin-syntaxhighlight -D
+        pnpm add -D @11ty/eleventy-plugin-syntaxhighlight
     */
     /* const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
     eleventyConfig.addPlugin(syntaxHighlight); */

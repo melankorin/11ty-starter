@@ -1,5 +1,5 @@
 // Uncomment this and install dependency if using.
-// npm install @11ty/eleventy-fetch -D
+// pnpm add -D @11ty/eleventy-fetch
 /* const EleventyFetch = require("@11ty/eleventy-fetch");
 
 module.exports = async function() {
