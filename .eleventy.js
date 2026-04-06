@@ -134,12 +134,12 @@ module.exports = async function (eleventyConfig) {
     /* eleventyConfig.setLibrary("md", markdownItRenderer); */
 
     // Inline Markdown filter
-    /* eleventyConfig.addFilter("markdownifyInline", (str) => {
+    /* eleventyConfig.addFilter("md_inline", (str) => {
         return markdownItRenderer.renderInline(str);
     }); */
 
     // Full Markdown filter
-    /* eleventyConfig.addFilter("markdownify", (str) => {
+    /* eleventyConfig.addFilter("md", (str) => {
         return markdownItRenderer.render(str);
     }); */
 
