@@ -12,16 +12,16 @@ eleventyExcludeFromCollections: true
         <title>{{ site.title }}</title>
         <description>{{ site.description }}</description>
         <link>{{ site.url }}</link>
-        <atom:link href="{{ site.url }}{{ page.url | url }}" rel="self" type="application/rss+xml" />
+        <atom:link href="{{ site.url }}{{ page.url }}" rel="self" type="application/rss+xml" />
         <language>{{ site.lang }}</language>
         <generator>{{ eleventy.generator }}</generator>
         {% for post in collections.blog %}
             <item>
                 <title>{{ post.fileSlug | replace: "-", " " | capitalize }}</title>
                 <description>This is an RSS item.</description>
-                <link>{{ site.url }}{{ post.url | url }}</link>
+                <link>{{ site.url }}{{ post.url }}</link>
                 <pubDate>{{ post.date | date_format: "ccc, dd MMM yyyy HH:mm:ss ZZZZ", site.timezone }}</pubDate>
-                <guid isPermaLink="true">{{ site.url }}{{ post.url | url }}</guid>
+                <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
             </item>
         {% endfor %}
     </channel>

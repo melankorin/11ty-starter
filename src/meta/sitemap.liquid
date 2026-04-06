@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
     {%- for item in collections.all %}
         {%- if item.url %}
     <url>
-        <loc>{{ site.url }}{{ item.url | url }}</loc>
+        <loc>{{ site.url }}{{ item.url }}</loc>
     </url>
         {%- endif %}
     {%- endfor %}

@@ -11,7 +11,7 @@
     <meta name="author" content="{{ site.author }}">
     <meta name="description" content="{{ description | default: site.description }}">
     <meta name="theme-color" content="{{ theme_colour | default: site.theme_colour }}">
-    <link rel="canonical" href="{{ site.url }}{{ page.url | url }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
 
     {% if stylesheets %}
         {% for stylesheet in stylesheets %}
-            <link rel="stylesheet" href="{{ stylesheet.src | url }}">
+            <link rel="stylesheet" href="{{ stylesheet.src }}">
         {% endfor %}
     {% endif %}
 
@@ -31,7 +31,7 @@
             <script
                 {% if script.defer %}defer{% endif %}
                 {% if script.async %}async{% endif %}
-                src="{{ script.src | url }}"></script>
+                src="{{ script.src }}"></script>
         {% endfor %}
     {% endif %}
 
@@ -41,7 +41,7 @@
 
     {% comment %} 
     <meta property="og:title" content="{{ site.title }}">
-    <meta property="og:url" content="{{ site.url }}{{ page.url | url }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:description"  content="{{ site.description }}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ site.title }}">
@@ -56,7 +56,7 @@
     {% comment %}
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="{{ site.url | remove: "https://" }}">
-    <meta property="twitter:url" content="{{ site.url }}{{ page.url | url }}">
+    <meta property="twitter:url" content="{{ site.url }}{{ page.url }}">
     <meta name="twitter:title" content="{{ site.title }}">
     <meta name="twitter:description" content="{{ site.description }}">
     <meta name="twitter:image" content="{{ site.url }}/assets/img/common/og.png">
@@ -73,7 +73,7 @@
             <script
                 {% if script.defer %}defer{% endif %}
                 {% if script.async  %}async{% endif %}
-                src="{{ script.src | url }}"></script>
+                src="{{ script.src }}"></script>
         {% endfor %}
     {% endif %}
 
