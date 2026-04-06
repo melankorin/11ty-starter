@@ -119,7 +119,6 @@ module.exports = async function (eleventyConfig) {
     const mdAnchor = require("markdown-it-anchor");
     const mdDiv = require("markdown-it-div");
     const mdAttr = require("markdown-it-attrs"); */
-    
 
     /* const markdownItRenderer = markdownIt({
             html: true,
