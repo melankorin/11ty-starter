@@ -1,4 +1,6 @@
 const gulp = require("gulp");
+// Uncomment the line below and install the dependency if using Tailwind.
+// const replace = require('gulp-replace');
 const hash_src = require("gulp-hash-src");
 const htmlmin = require("gulp-html-minifier-terser");
 // Uncomment the line below and install the dependency if using Sass.
@@ -19,6 +21,11 @@ function cacheBusting() {
             build_dir: "site",
             src_path: "site"
         }))
+        // This pipe (and gulp-replace) can be removed if not using Tailwind.
+        /* .pipe(replace(/(\[[^\]]*?url\(.*?)(\?cbh=[a-f0-9]+)(\).*?\])/g, function(match, p1, p2, p3) {
+            if (this.file.extname === '.html') { return p1 + p3; }
+            return match;
+        })) */
         .pipe(gulp.dest("site"));
 }
 
