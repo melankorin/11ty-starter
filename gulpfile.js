@@ -5,6 +5,9 @@ const hash_src = require("gulp-hash-src");
 const htmlmin = require("gulp-html-minifier-terser");
 // Uncomment the line below and install the dependency if using Sass.
 // const autoprefixer = require("gulp-autoprefixer");
+// Uncomment the lines below and install the dependencies if deploying to cPanel.
+// const ftp = require("vinyl-ftp");
+// const log = require("fancy-log");
 
 // Uncomment this block if using Sass.
 // Prefix CSS
@@ -36,9 +39,36 @@ function processHTML() {
         .pipe(gulp.dest("site"));
 }
 
+// FTP upload
+// Uncomment the lines below, create an .env file and install the dependencies if deploying to cPanel.
+/* function ftpUpload() {
+    const conn = ftp.create({
+        host:     process.env.FTP_HOST,
+        user:     process.env.FTP_USER,
+        password: process.env.FTP_PASS,
+        parallel: 4,
+        log:      require('fancy-log')
+    });
+
+    const remotePath = process.env.FTP_PATH || "/";
+
+    return gulp.src('site/**', { 
+            buffer: false, 
+            base: 'site', 
+            nodir: true,
+            encoding: false
+        })
+        .pipe(conn.differentSize(process.env.FTP_PATH))
+        .pipe(conn.dest(process.env.FTP_PATH))
+        .pipe(conn.clean(process.env.FTP_PATH, 'site/**'));
+} */
+
 module.exports.default = gulp.series(
     // Uncomment the line below if using Sass.
     // prefixCSS,
     cacheBusting, 
     processHTML
 );
+
+// Uncomment the lines below if deploying to cPanel.
+// module.exports.deploy = ftpUpload;
