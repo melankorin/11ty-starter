@@ -2,8 +2,8 @@
   "name": "11ty-starter",
   "version": "1.0.0",
   "scripts": {
-    "clean:site": "node -e \"fs.rmSync('site', { recursive: true, force: true })\"",
-    "clean:cache": "node -e \"fs.rmSync('.cache', { recursive: true, force: true })\"",
+    "clean:site": "node -e \"require('fs').rmSync('site', { recursive: true, force: true })\"",
+    "clean:cache": "node -e \"require('fs').rmSync('.cache', { recursive: true, force: true })\"",
     "watch:css": " ",
     "watch:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --watch --sourcemap",
     "watch:eleventy": "eleventy --serve",
