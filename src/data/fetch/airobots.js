@@ -1,12 +1,10 @@
-// Uncomment this and install dependency if using.
-// pnpm add -D @11ty/eleventy-fetch
-/* const EleventyFetch = require("@11ty/eleventy-fetch");
+import EleventyFetch from "@11ty/eleventy-fetch";
 
-module.exports = async function() {
+export default async function() {
     const url = "https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/main/robots.txt";
 
     return EleventyFetch(url, {
         duration: "7d",
         type: "text"
     });
-}; */
+};

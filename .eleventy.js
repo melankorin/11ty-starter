@@ -1,8 +1,15 @@
-const { RenderPlugin } = require("@11ty/eleventy");
+import fs from "node:fs";
+import fsp from "node:fs/promises";
+import path from "node:path";
+import { RenderPlugin } from "@11ty/eleventy";
+import Image from "@11ty/eleventy-img";
+// import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import eleventyOgImage from 'eleventy-plugin-og-image';
+import { DateTime } from "luxon";
+import yaml from "js-yaml";
+import markdownIt from "markdown-it";
 
-module.exports = async function (eleventyConfig) {
-
-    const eleventyOgImage = (await import('eleventy-plugin-og-image')).default;
+export default async function(eleventyConfig) {
 
     // FILES --------------------------------------------------------------------------------------
 
@@ -14,11 +21,10 @@ module.exports = async function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"src/meta/favicons/!(*.liquid)": "/"});
 
     // Copy optimized images after build
-    const fs = require("node:fs");
-    const fsp = require("node:fs/promises");
     eleventyConfig.on("eleventy.after", async () => {
         const source = "./.cache/images/";
         const dest = "./site/assets/img/";
+
         if (fs.existsSync(source)) {
             try {
                 await fsp.cp(source, dest, { recursive: true });
@@ -30,9 +36,8 @@ module.exports = async function (eleventyConfig) {
     });
 
     // DATA ---------------------------------------------------------------------------------------
-
+    
     // Parse YAML files as data
-    const yaml = require("js-yaml");
     eleventyConfig.addDataExtension("yaml,yml", (contents) => yaml.load(contents));
 
     // Add current date and time as global data
@@ -47,7 +52,6 @@ module.exports = async function (eleventyConfig) {
         To use this:
         {{ variable | date_format: "d LLL yyy", "utc" }}
     */
-    const { DateTime } = require("luxon");
     eleventyConfig.addFilter("date_format", (date, format = "d LLL yyyy", timezone = "utc") => {
         return DateTime.fromJSDate(new Date(date), { zone: timezone })
             .setLocale("en")
@@ -55,7 +59,7 @@ module.exports = async function (eleventyConfig) {
     });
 
     // SHORTCODES ---------------------------------------------------------------------------------
-
+    
     // For demonstration purposes: container shortcode
     /*
         To use this:
@@ -75,8 +79,6 @@ module.exports = async function (eleventyConfig) {
         {% image "src", "alt", "classes", "widths", "sizes", "formats", "loading", "decoding" %}
         {% image "./src/img/dynamic/ocean.jpg", "A blue ocean", "w-64 h-64 object-cover border-4 border-white", "30, 600", "(max-width: 800px) 100vw, 50vw", "webp", "lazy", "async" %}
     */
-    const Image = require("@11ty/eleventy-img");
-    const path = require("path");
     eleventyConfig.addShortcode("image", async function (src, alt, className = "", widths = "300, 600", sizes = "100vw", formats = "webp", loading = "lazy", decoding = "async") {
         const inputBase = "./src/img/dynamic/";
         const outputBase = "./.cache/images/";
@@ -106,43 +108,29 @@ module.exports = async function (eleventyConfig) {
         });
         return Image.generateHTML(metadata, {alt, sizes, class: className, loading, decoding});
     });
-    
+
     // MARKDOWN -----------------------------------------------------------------------------------
-
-    /*
-        To use this, install these dependencies:
-        pnpm add -D markdown-it markdown-it-attrs markdown-it-div markdown-it-anchor
-    */
-
-    // Set up Markdown renderer
-    /* const markdownIt = require("markdown-it");
-    const mdAnchor = require("markdown-it-anchor");
-    const mdDiv = require("markdown-it-div");
-    const mdAttr = require("markdown-it-attrs"); */
-
-    /* const markdownItRenderer = markdownIt({
+    
+    const md = markdownIt({
             html: true,
             breaks: true,
             typographer: true
-        })
-        .use(mdAnchor)
-        .use(mdDiv)
-        .use(mdAttr); */
+        });
 
     // Set Markdown renderer as the default renderer for .md files
-    /* eleventyConfig.setLibrary("md", markdownItRenderer); */
-
-    // Inline Markdown filter
-    /* eleventyConfig.addFilter("md_inline", (str) => {
-        return markdownItRenderer.renderInline(str);
-    }); */
+    eleventyConfig.setLibrary("md", markdownIt);
 
     // Full Markdown filter
-    /* eleventyConfig.addFilter("md", (str) => {
-        return markdownItRenderer.render(str);
-    }); */
+    eleventyConfig.addFilter("md", (str) => {
+        return md.render(str);
+    });
 
-    // CONFIGURATION ------------------------------------------------------------------------------
+    // Inline Markdown filter
+    eleventyConfig.addFilter("md_inline", (str) => {
+        return md.renderInline(str);
+    });
+
+    // CONFIG -------------------------------------------------------------------------------------
     
     // Enable render plugin
     eleventyConfig.addPlugin(RenderPlugin);
@@ -152,8 +140,7 @@ module.exports = async function (eleventyConfig) {
         To use this, install this dependency:
         pnpm add -D @11ty/eleventy-plugin-syntaxhighlight
     */
-    /* const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-    eleventyConfig.addPlugin(syntaxHighlight); */
+    // eleventyConfig.addPlugin(syntaxHighlight);
 
     // Strict filters in Liquid
     eleventyConfig.setLiquidOptions({
@@ -177,6 +164,7 @@ module.exports = async function (eleventyConfig) {
             ],
         }
     });
+    
 
     // SERVE AND EXPORT ---------------------------------------------------------------------------
 
@@ -199,4 +187,4 @@ module.exports = async function (eleventyConfig) {
         }
     };
 
-};
+}

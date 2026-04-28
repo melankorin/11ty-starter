@@ -1,9 +1,10 @@
 {
   "name": "11ty-starter",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "clean:site": "node -e \"require('fs').rmSync('site', { recursive: true, force: true })\"",
-    "clean:cache": "node -e \"require('fs').rmSync('.cache', { recursive: true, force: true })\"",
+    "clean:site": "node -e \"import('fs').then(fs => fs.rmSync('site', { recursive: true, force: true }))\"",
+    "clean:cache": "node -e \"import('fs').then(fs => fs.rmSync('.cache', { recursive: true, force: true }))\"",
     "watch:css": " ",
     "watch:js": "esbuild src/js/*.js --bundle --outdir=site/assets/js --watch --sourcemap",
     "watch:eleventy": "eleventy --serve",
@@ -12,17 +13,23 @@
     "build:eleventy": "eleventy",
     "build:gulp": "gulp",
     "start": "pnpm clean:site && pnpm --parallel run \"/^watch:.*/\"",
-    "build": "pnpm clean:site && pnpm --parallel run \"/^build:(js|css|eleventy)/\" && pnpm build:gulp"
+    "build": "pnpm clean:site && pnpm --parallel run \"/^build:(js|css|eleventy)/\" && pnpm build:gulp",
+    "ftp": "pnpm build && pnpm gulp deploy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-fetch": "^5.1.2",
     "@11ty/eleventy-img": "^6.0.4",
+    "dotenv": "^17.4.2",
     "eleventy-plugin-og-image": "^4.2.1",
     "esbuild": "^0.27.4",
+    "fancy-log": "^2.0.0",
     "gulp": "^5.0.1",
     "gulp-hash-src": "^0.1.6",
     "gulp-html-minifier-terser": "^8.0.0",
     "js-yaml": "^4.1.1",
-    "luxon": "^3.7.2"
+    "luxon": "^3.7.2",
+    "markdown-it": "^14.1.1",
+    "vinyl-ftp": "^0.6.1"
   }
 }
